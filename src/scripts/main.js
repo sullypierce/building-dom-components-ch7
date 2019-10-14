@@ -73,29 +73,73 @@ const students = [
     }
 ]
 
-const createStudentComponent = (student) => {
-    let nameClass;
-    let subjClass;
-    let infoClass;
-    if (student.score <= 60){
+// const createStudentComponent = (student) => {
+//     let nameClass;
+//     let subjClass;
+//     let infoClass;
+//     if (student.score <= 60){
+//         nameClass = "failing";
+//         subjClass = "failing";
+//         infoClass = "failing";
+//     } else {
+//         nameClass= "xx-large passing";
+//         subjClass= "bordered dashed section--padded";
+//         infoClass= "pushRight";
+//     };
+    
+    
+//     return `
+//         <div class="student">
+//             <h1 class="${nameClass}">${student.name}</h1>
+//             <section class="${subjClass}">${student.subject}</section>
+//             <aside class="${infoClass}">${student.info}</aside>
+//         </div>
+//     `
+// }
+const h1 = (student) => {
+        let nameClass;
+    if (student.score <= 60) {
         nameClass = "failing";
-        subjClass = "failing";
-        infoClass = "failing";
     } else {
-        nameClass= "xx-large passing";
-        subjClass= "bordered dashed section--padded";
-        infoClass= "pushRight";
+        nameClass = "xx-large passing";
     };
-    
-    
     return `
-        <div class="student">
-            <h1 class="${nameClass}">${student.name}</h1>
-            <section class="${subjClass}">${student.subject}</section>
-            <aside class="${infoClass}">${student.info}</aside>
-        </div>
+    <h1 class= "${nameClass}">${student.name}</h1>
     `
 }
+
+const section = (student) => {
+    let subjClass;
+if (student.score <= 60) {
+    subjClass = "failing";
+} else {
+    subjClass = "bordered dashed section--padded";
+};
+return `
+<section class= "${subjClass}">${student.subject}</section>
+`
+}
+
+const aside = (student) => {
+    let infoClass;
+if (student.score <= 60) {
+    infoClass = "failing";
+} else {
+    infoClass = "pushRight";
+};
+return `
+<aside class= "${infoClass}">${student.info}</aside>
+`
+}
+
+const createStudentComponent = (student) => `
+    <div id="student">
+        ${h1(student)}
+        ${section(student)}
+        ${aside(student)}
+
+    </div>
+    `
 
 
 const studentContainer = document.querySelector("#container")
@@ -106,4 +150,5 @@ for (let i = 0; i < students.length; i++) {
       students[i]
     )
 }
+
 
