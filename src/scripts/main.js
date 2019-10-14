@@ -72,7 +72,7 @@ const students = [
         score: 95
     }
 ]
-
+//FIRST PRACTICE CODE   
 // const createStudentComponent = (student) => {
 //     let nameClass;
 //     let subjClass;
@@ -96,51 +96,73 @@ const students = [
 //         </div>
 //     `
 // }
-const h1 = (student) => {
-        let nameClass;
-    if (student.score <= 60) {
-        nameClass = "failing";
-    } else {
-        nameClass = "xx-large passing";
-    };
-    return `
-    <h1 class= "${nameClass}">${student.name}</h1>
-    `
-}
 
-const section = (student) => {
-    let subjClass;
+
+// FIRST CHALLENGE CODE 
+// const h1 = (student) => {
+//         let nameClass;
+//     if (student.score <= 60) {
+//         nameClass = "failing";
+//     } else {
+//         nameClass = "xx-large passing";
+//     };
+//     return `
+//     <h1 class= "${nameClass}">${student.name}</h1>
+//     `
+// }
+
+// const section = (student) => {
+//     let subjClass;
+// if (student.score <= 60) {
+//     subjClass = "failing";
+// } else {
+//     subjClass = "bordered dashed section--padded";
+// };
+// return `
+// <section class= "${subjClass}">${student.subject}</section>
+// `
+// }
+
+// const aside = (student) => {
+//     let infoClass;
+// if (student.score <= 60) {
+//     infoClass = "failing";
+// } else {
+//     infoClass = "pushRight";
+// };
+// return `
+// <aside class= "${infoClass}">${student.info}</aside>
+// `
+// }
+
+// const createStudentComponent = (student) => `
+//     <div id="student">
+//         ${h1(student)}
+//         ${section(student)}
+//         ${aside(student)}
+
+//     </div>
+//     `
+
+
+// 2ND PRACTICE CODE
+const element = (elType, student, studentKey, classType) => {
+    let Class;
 if (student.score <= 60) {
-    subjClass = "failing";
+    Class = "failing";
 } else {
-    subjClass = "bordered dashed section--padded";
+    Class = classType;
 };
 return `
-<section class= "${subjClass}">${student.subject}</section>
+<${elType} class= "${Class}">${student[studentKey]}</${elType}>
 `
 }
-
-const aside = (student) => {
-    let infoClass;
-if (student.score <= 60) {
-    infoClass = "failing";
-} else {
-    infoClass = "pushRight";
-};
-return `
-<aside class= "${infoClass}">${student.info}</aside>
-`
-}
-
 const createStudentComponent = (student) => `
     <div id="student">
-        ${h1(student)}
-        ${section(student)}
-        ${aside(student)}
-
-    </div>
-    `
-
+        ${element("h1", student, "name", "xx-large passing")}
+        ${element("section", student, "subject", "bordered dashed section--padded")}
+        ${element("aside", student, "info", "pushRight")}
+    </div>`
 
 const studentContainer = document.querySelector("#container")
 
